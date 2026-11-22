@@ -53,6 +53,7 @@ button { cursor: pointer; }
   text-decoration: none;
 }
 .brand img { display: block; width: clamp(11.5rem, 18vw, 15rem); max-width: 100%; height: auto; }
+.english-brand { max-width: 22ch; font-family: Georgia, serif; font-size: clamp(1.15rem, 2.15vw, 1.55rem); font-weight: 650; line-height: 1.15; }
 .top-nav { display: flex; align-items: center; gap: 0.25rem; margin-left: auto; }
 .top-nav a {
   display: flex;
@@ -68,6 +69,7 @@ button { cursor: pointer; }
 }
 .top-nav a[aria-current="page"] { border-bottom-color: var(--blue); color: var(--blue); background: var(--pale); }
 .top-nav a:hover { color: var(--blue); background: var(--pale); }
+#language-toggle { margin-inline-start: 0.25rem; border-inline-start: 1px solid var(--line); color: var(--blue); }
 h1, h2, h3, p { margin: 0; }
 h1 { font-size: clamp(1.9rem, 3vw, 2.65rem); line-height: 1.28; color: var(--navy); letter-spacing: -0.035em; }
 .sr-only { position: absolute; width: 1px; height: 1px; margin: -1px; padding: 0; clip-path: inset(50%); overflow: hidden; white-space: nowrap; }
@@ -136,6 +138,8 @@ h1 { font-size: clamp(1.9rem, 3vw, 2.65rem); line-height: 1.28; color: var(--nav
 .about-list li + li { margin-top: 0.45rem; }
 .info-page .info-reference { margin-top: 1.45rem; font-size: 0.9rem; }
 .filter-grid { display: grid; gap: 1rem; grid-template-columns: 1.05fr 1.45fr 1.15fr 0.9fr; }
+html[lang="en"] .filter-grid { align-items: end; }
+html[lang="en"] .year-control { flex-wrap: wrap; gap: 0.05rem 0.4rem; }
 .fragment-fields { display: grid; gap: 1rem; grid-template-columns: 1.65fr 1fr; margin-bottom: 1rem; }
 .field { display: grid; gap: 0.35rem; min-width: 0; }
 .field label, .field .label { font-size: 0.875rem; font-weight: 680; color: #324a61; }
@@ -181,6 +185,7 @@ td.number, th.number { text-align: right; font-variant-numeric: tabular-nums; }
 .page-count { font-size: 0.89rem; color: var(--muted); padding-inline: 0.35rem; font-variant-numeric: tabular-nums; }
 .notice { padding: 1.3rem; background: #fff; border: 1px solid var(--line); border-radius: 0.6rem; color: var(--ink); }
 .kwic { table-layout: fixed; min-width: 43rem; }
+html[lang="en"] .kwic th { white-space: normal; }
 .kwic .source-cell { width: 22%; }
 .kwic .code-cell { width: 12%; }
 .kwic .key-cell { width: 17%; color: var(--accent); font-weight: 670; overflow-wrap: anywhere; }
@@ -236,7 +241,9 @@ td.number, th.number { text-align: right; font-variant-numeric: tabular-nums; }
   .brand { min-height: 2rem; padding-left: 0; border-left: 0; }
   .brand img { width: 13.2rem; }
   .top-nav { margin-left: 0; }
-  .top-nav a { min-height: 2.2rem; padding-inline: 0.75rem; }
+  .top-nav a { min-height: 2.2rem; padding-inline: 0.65rem; }
+  .english-brand { max-width: none; }
+  .mode-link { padding-inline: 0.65rem; }
   .search-panel { padding: 1.1rem 0.85rem; }
   .info-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .fragment-fields { grid-template-columns: 1fr; gap: 0.65rem; }
