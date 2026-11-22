@@ -268,9 +268,24 @@ function searchModeNavigation() {
 
 function renderAbout() {
   document.title = "简介 · 高校毕业致辞语料库";
-  const count = catalog.statistics;
-  const stats = [["所高校", count.schools], ["篇主语料", count.main], ["篇补充材料", count.supplement],
-    ["条暂缺全文", count.missing]];
+  const schools = new Map();
+  let fullTexts = 0;
+  let characters = 0;
+  for (const record of catalog.documents) {
+    const schoolCount = schools.get(record.school) ?? 0;
+    const hasText = record.status !== "missing";
+    schools.set(record.school, schoolCount + Number(hasText));
+    if (hasText) {
+      fullTexts += 1;
+      characters += record.count ?? 0;
+    }
+  }
+  const stats = [["所高校", schools.size], ["篇全文", fullTexts], ["字（全文总字数）", characters]];
+  const schoolCounts = [...schools].sort(([a], [b]) => a.localeCompare(b, "zh-CN"))
+    .map(([name, count]) => element("li", {}, [
+      element("span", {text: name}),
+      element("span", {text: textFormat.format(count) + " 篇"}),
+    ]));
   app.append(element("article", {class: "info-page panel", "aria-labelledby": "about-heading"}, [
     element("h1", {id: "about-heading", text: "语料库简介"}),
     element("p", {class: "intro", text: "高校毕业致辞语料库是 R.W. Corpus Collection 的一个专题库，由 R.W. 个人建设和维护。它汇集高校毕业典礼及相关学位授予仪式上的中文致辞，支持全文阅读、片段检索和篇章结构比较。"}),
@@ -285,6 +300,7 @@ function renderAbout() {
     element("dl", {class: "info-stats"}, stats.map(([name, n]) => element("div", {}, [
       element("dt", {text: name}), element("dd", {text: textFormat.format(n)}),
     ]))),
+    element("p", {text: "各校篇数按已收录的全文统计。总字数按正文中的非空白字符计算，含标点。"}),
     element("h2", {text: "检索与阅读"}),
     element("ul", {class: "about-list"}, [
       element("li", {text: "查整篇致辞。可组合毕业届别、学校、致辞人和字数上限，找出同一学校或同一届次的多场致辞，逐篇阅读连续正文。"}),
@@ -295,6 +311,8 @@ function renderAbout() {
     element("p", {text: "可以用本库分析毕业致辞怎样从问候过渡到主题、提出期待并加以论证，也可以比较不同学校、届别或场次在组织方式和表达策略上的差异。例如，先检索「希望你们」所在的片段，再查看同篇讲者怎样为期待提供理由。教学中可用整篇致辞开展体裁分析，或让学生尝试分段编码，再与现有判定依据对照讨论。"}),
     element("h2", {text: "版本与引用"}),
     element("p", {text: "当前语料版本为 v" + catalog.version + "。引用时请注明语料库名称、版本和 GT 编号，引用具体片段时附上片段号。进行历时比较时，请注明使用毕业届别还是登记讲话年份，并留意按届别暂记的年份。"}),
+    element("h2", {id: "schools-heading", text: "各校收录篇数"}),
+    element("ul", {class: "school-counts", role: "list", "aria-labelledby": "schools-heading"}, schoolCounts),
   ]));
 }
 

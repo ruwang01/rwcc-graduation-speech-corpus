@@ -1,4 +1,6 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" fill="none" stroke="#003da5" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-  <path d="M26 9h12m-6 0v8m-6 0h12c3.2 0 5 1.7 5.8 4.8L51 47H13l7.2-25.2C21 18.7 22.8 17 26 17Z"/>
-  <path d="M16 47c4.6 4 10.1 5.8 16 5.8S43.4 51 48 47M32 28v14m-2 2h4"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="4 0 58 64" fill="none" stroke="#003da5" stroke-linecap="round" stroke-linejoin="round" role="img" aria-labelledby="bell-title">
+  <title id="bell-title">R.W.CC 木铎标识</title>
+  <path stroke-width="2.65" d="M12 53.5 18.8 31.4Q19.2 30 20.5 29.2L26.1 25.7Q27.3 24.9 27.6 23.4L28.5 18.8Q28.7 17.5 30 17.5H36Q37.3 17.5 37.5 18.8L38.4 23.4Q38.7 24.9 39.9 25.7L45.5 29.2Q46.8 30 47.2 31.4L54 53.5C49.1 53.5 47.6 58.1 43.5 58.1S37.8 53.5 33 53.5 26.6 58.1 22.5 58.1 16.9 53.5 12 53.5Z"/>
+  <path stroke-width="2.05" d="M23.19 27.52H42.81M28.9 27.52q3.1 11.34 8.55 21.38"/>
+  <path stroke-width="1.95" d="M29.1 13.3q3.9-4.65 7.8 0M25.7 9.1q7.3-9.2 14.6 0"/>
 </svg>

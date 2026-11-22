@@ -102,7 +102,7 @@ h1 { font-size: clamp(1.9rem, 3vw, 2.65rem); line-height: 1.28; color: var(--nav
 .info-page p { color: var(--muted); }
 .info-stats {
   display: grid;
-  grid-template-columns: repeat(4, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 0.8rem;
   margin: 1.35rem 0;
   padding: 0.9rem 1rem;
@@ -112,6 +112,23 @@ h1 { font-size: clamp(1.9rem, 3vw, 2.65rem); line-height: 1.28; color: var(--nav
 .info-stats div { display: grid; }
 .info-stats dt { grid-row: 2; color: var(--muted); font-size: 0.86rem; }
 .info-stats dd { grid-row: 1; margin: 0; color: var(--blue); font-size: 1.5rem; font-weight: 680; }
+.school-counts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+  column-gap: 1.25rem;
+  margin: 0.4rem 0 0;
+  padding: 0;
+  list-style: none;
+}
+.school-counts li {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 0.4rem 0.65rem;
+  padding-block: 0.48rem;
+  border-bottom: 1px solid var(--soft-line);
+}
+.school-counts span:last-child { color: var(--muted); font-variant-numeric: tabular-nums; white-space: nowrap; }
 .author-details { display: grid; grid-template-columns: max-content minmax(0, 1fr); gap: 0.25rem 1rem; margin: 1.25rem 0 0; font-size: 0.94rem; }
 .author-details dt { color: var(--muted); }
 .author-details dd { margin: 0; }
